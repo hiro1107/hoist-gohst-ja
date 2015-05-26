@@ -1,0 +1,29 @@
+{{!< default}}
+
+<header>
+    <span><a href="{{@blog.url}}/">{{@blog.title}}</a></span>
+</header>
+
+
+
+    {{! Each post will be output using this markup }}
+    {{#foreach posts}}
+        <article class="{{post_class}}">
+            <a href="{{url}}" class="Article-Link">
+                <h2 class="post-title">{{{title}}}</h2>
+            </a>
+            <section class="post-excerpt">
+                <p>{{excerpt characters="300"}}&hellip;</p>
+            </section>
+            <p>
+                <a href="{{url}}" class="continue-reading">
+                    続きを読む →
+                </a>
+            </p>
+            <span class="post-meta">
+                 <img src="{{author.image}}" class="profileimage"> <a href="{{#author}}{{url}}{{/author}}">{{author.name}}</a> {{tags prefix="on "}} | <time datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMM YYYY"}}</time>
+            </span>
+        </article>
+    {{/foreach}}
+
+    {{pagination}}
